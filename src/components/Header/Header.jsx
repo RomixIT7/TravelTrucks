@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import clsx from "clsx";
 
-import logo from "/public/logo.svg";
+import logo from "/logo.svg";
 
 import css from "./Header.module.css";
 

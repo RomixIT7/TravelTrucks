@@ -10,7 +10,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-wind"></use>
+              <use href="/symbol-defs.svg#icon-wind"></use>
             </svg>
             AC
           </button>
@@ -18,7 +18,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-diagram"></use>
+              <use href="/symbol-defs.svg#icon-diagram"></use>
             </svg>
             Automatic
           </button>
@@ -26,7 +26,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-cup-hot"></use>
+              <use href="/symbol-defs.svg#icon-cup-hot"></use>
             </svg>
             Kitchen
           </button>
@@ -34,7 +34,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-tv"></use>
+              <use href="/symbol-defs.svg#icon-tv"></use>
             </svg>
             TV
           </button>
@@ -42,7 +42,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-droplet"></use>
+              <use href="/symbol-defs.svg#icon-droplet"></use>
             </svg>
             Bathroom
           </button>
@@ -54,7 +54,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-bi_grid-1x2"></use>
+              <use href="/symbol-defs.svg#icon-bi_grid-1x2"></use>
             </svg>
             Van
           </button>
@@ -62,7 +62,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-bi_grid"></use>
+              <use href="/symbol-defs.svg#icon-bi_grid"></use>
             </svg>
             Fully Integrated
           </button>
@@ -70,7 +70,7 @@ const Filters = () => {
         <li>
           <button className={css.btn}>
             <svg className={css.icon} width="32" height="32">
-              <use href="/public/symbol-defs.svg#icon-bi_grid-3x3-gap"></use>
+              <use href="/symbol-defs.svg#icon-bi_grid-3x3-gap"></use>
             </svg>
             Alcove
           </button>

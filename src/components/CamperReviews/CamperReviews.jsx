@@ -20,7 +20,7 @@ const CamperReviews = ({ camper }) => {
                   <ul className={css.starList}>
                     <li>
                       <img
-                        src={`/public/${
+                        src={`/${
                           review.reviewer_rating >= 1 ? "yellow" : "gray"
                         }-star.png`}
                         width="16"
@@ -29,7 +29,7 @@ const CamperReviews = ({ camper }) => {
                     </li>
                     <li>
                       <img
-                        src={`/public/${
+                        src={`/${
                           review.reviewer_rating >= 2 ? "yellow" : "gray"
                         }-star.png`}
                         width="16"
@@ -38,7 +38,7 @@ const CamperReviews = ({ camper }) => {
                     </li>
                     <li>
                       <img
-                        src={`/public/${
+                        src={`/${
                           review.reviewer_rating >= 3 ? "yellow" : "gray"
                         }-star.png`}
                         width="16"
@@ -47,7 +47,7 @@ const CamperReviews = ({ camper }) => {
                     </li>
                     <li>
                       <img
-                        src={`/public/${
+                        src={`/${
                           review.reviewer_rating >= 4 ? "yellow" : "gray"
                         }-star.png`}
                         width="16"
@@ -56,7 +56,7 @@ const CamperReviews = ({ camper }) => {
                     </li>
                     <li>
                       <img
-                        src={`/public/${
+                        src={`/${
                           review.reviewer_rating >= 5 ? "yellow" : "gray"
                         }-star.png`}
                         width="16"

@@ -17,14 +17,14 @@ const CamperDetails = ({ camper }) => {
       <p className={css.camperNameAndPrice}>{camper.name}</p>
       <div className={css.camperRatingAndLocationWrapper}>
         <div className={css.camperRatingWrapper}>
-          <img src="/public/yellow-star.png" width="16" height="16" />
+          <img src="/yellow-star.png" width="16" height="16" />
           <p className={css.camperRating}>
             {camper.rating} ({camper.reviews?.length} Reviews)
           </p>
         </div>
         <div className={css.camperRatingWrapper}>
           <svg className={css.icon} width="16" height="16">
-            <use href="/public/symbol-defs.svg#icon-map"></use>
+            <use href="/symbol-defs.svg#icon-map"></use>
           </svg>
           <p>{camper.location}</p>
         </div>

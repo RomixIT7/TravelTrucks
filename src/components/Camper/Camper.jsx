@@ -20,21 +20,21 @@ const Camper = ({ camper }) => {
             <div className={css.camperPriceWrapper}>
               <p>€{camper.price}.00</p>
               <svg className={css.favoriteIcon} width="26" height="24">
-                <use href="/public/symbol-defs.svg#icon-heart"></use>
+                <use href="/symbol-defs.svg#icon-heart"></use>
               </svg>
             </div>
           </div>
 
           <div className={css.camperRatingAndLocationWrapper}>
             <div className={css.camperRatingWrapper}>
-              <img src="/public/yellow-star.png" width="16" height="16" />
+              <img src="/yellow-star.png" width="16" height="16" />
               <p className={css.camperRating}>
                 {camper.rating} ({camper.reviews?.length} Reviews)
               </p>
             </div>
             <div className={css.camperRatingWrapper}>
               <svg className={css.icon} width="16" height="16">
-                <use href="/public/symbol-defs.svg#icon-map"></use>
+                <use href="/symbol-defs.svg#icon-map"></use>
               </svg>
               <p>{camper.location}</p>
             </div>
