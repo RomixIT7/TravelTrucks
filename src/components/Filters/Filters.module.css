@@ -1,3 +1,57 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 360px;
+  height: 88px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  border-radius: 12px;
+  padding: 18px 18px 18px 46px;
+  width: 360px;
+  height: 56px;
+  background-color: var(--inputs);
+  outline: none;
+  border: none;
+  color: var(--main);
+}
+
+.input::placeholder {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.errorMessage {
+  color: var(--button);
+  font-size: 14px;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  text-align: center;
+}
+
+.iconMap {
+  fill: var(--main);
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input:placeholder-shown + .iconMap {
+  fill: var(--gray);
+}
+
 .filters {
   font-family: var(--font-family);
   font-weight: 500;
@@ -46,15 +100,34 @@
   gap: 8px;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: var(--main);
+  cursor: pointer;
 }
 
-.picked {
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox:checked + .btn {
+  border: 1px solid var(--button);
+}
+
+.radioBtn:checked + .btn {
   border: 1px solid var(--button);
 }
 
