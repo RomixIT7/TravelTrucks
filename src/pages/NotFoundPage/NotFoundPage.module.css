@@ -1,0 +1,37 @@
+.notFoundPageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 72px);
+}
+
+.notFoundText {
+  font-size: 36px;
+  color: var(--text);
+}
+
+.redirectText {
+  font-size: 24px;
+  color: var(--main);
+}
+
+.linkToHome {
+  display: block;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: fit-content;
+  height: 56px;
+  background-color: var(--button);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.linkToHome:hover {
+  background-color: var(--button-hover);
+}
