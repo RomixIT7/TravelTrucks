@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-const initialState = {};
-
-const rootReducer = (state = initialState, action) => {
-  return state;
-};
+import { globalReducer } from "./global/slice.js";
+import { campersReducer } from "./campers/slice.js";
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    global: globalReducer,
+    campers: campersReducer,
+  },
 });

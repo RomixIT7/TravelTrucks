@@ -1,79 +1,39 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import Loader from "../../components/Loader/Loader.jsx";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 import CamperDetails from "../../components/CamperDetails/CamperDetails.jsx";
+
+import { fetchCamperById } from "../../redux/campers/operation.js";
+import { selectError, selectLoading } from "../../redux/global/selectors.js";
+import { selectCamper } from "../../redux/campers/selectors.js";
 
 import css from "./CamperDetailsPage.module.css";
 
 const CamperDetailsPage = () => {
-  const camper = {
-    id: "1",
-    name: "Road Bear C 23-25",
-    price: 10000,
-    rating: 4.5,
-    location: "Ukraine, Kyiv",
-    description:
-      "Embadventures, promising comfort, style, and the freedom to explore at your own pace.",
-    form: "alcove",
-    length: "7.3m",
-    width: "2.65m",
-    height: "3.65m",
-    tank: "208l",
-    consumption: "30l/100km",
-    transmission: "automatic",
-    engine: "diesel",
-    AC: true,
-    bathroom: true,
-    kitchen: false,
-    TV: true,
-    radio: true,
-    refrigerator: false,
-    microwave: true,
-    gas: false,
-    water: true,
-    gallery: [
-      {
-        thumb: "https://ftp.goit.study/img/campers-test-task/1-1.webp",
-        original: "https://ftp.goit.study/img/campers-test-task/1-1.webp",
-      },
-      {
-        thumb: "https://ftp.goit.study/img/campers-test-task/1-2.webp",
-        original: "https://ftp.goit.study/img/campers-test-task/1-2.webp",
-      },
-      {
-        thumb: "https://ftp.goit.study/img/campers-test-task/1-3.webp",
-        original: "https://ftp.goit.study/img/campers-test-task/1-3.webp",
-      },
-    ],
-    reviews: [
-      {
-        reviewer_name: "Alice",
-        reviewer_rating: 4,
-        comment:
-          "Exceptional RV! The Road Bear C 23-25 provided a comfortable and enjoyable journey for my family. The amenities were fantastic, and the space was well-utilized. Highly recommended!",
-      },
-      {
-        reviewer_name: "Bob",
-        reviewer_rating: 3,
-        comment:
-          "Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience.",
-      },
-      {
-        reviewer_name: "Alice",
-        reviewer_rating: 5,
-        comment:
-          "Exceptional RV! The Road Bear C 23-25 provided a comfortable and enjoyable journey for my family. The amenities were fantastic, and the space was well-utilized. Highly recommended!",
-      },
-      {
-        reviewer_name: "Bob",
-        reviewer_rating: 2,
-        comment:
-          "Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience.",
-      },
-    ],
-  };
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const camper = useSelector(selectCamper);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchCamperById(id));
+  }, [dispatch, id]);
 
   return (
-    <div className={css.camperDetailsPageWrapper}>
-      {camper && <CamperDetails camper={camper} />}
-    </div>
+    <>
+      {loading && <Loader />}
+      {error && <ErrorMessage />}
+      {!error && !loading && camper && (
+        <div className={css.camperDetailsPageWrapper}>
+          {camper && <CamperDetails camper={camper} />}
+        </div>
+      )}
+    </>
   );
 };
 
