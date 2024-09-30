@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,6 +14,10 @@ import { selectFavorites } from "../../redux/favorite/selectors.js";
 import css from "./CampersList.module.css";
 
 const CampersList = () => {
+  const [page, setPage] = useState(1);
+
+  const perPage = 4;
+
   const { pathname } = useLocation();
 
   const dispatch = useDispatch();
@@ -32,20 +36,41 @@ const CampersList = () => {
     favoriteCampersIdArray?.includes(camper.id)
   );
 
+  const totalPages = Math.ceil(campers?.length / perPage);
+
+  const getCurrentPageData = () => {
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    return campers?.slice(0, end);
+  };
+
+  const handleClick = () => {
+    if (page < totalPages) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
   const allOrFavoriteCampers =
-    pathname === "/catalog" ? campers : favoriteCampers;
+    pathname === "/catalog" ? getCurrentPageData() : favoriteCampers;
 
   return (
     <>
       {loading && <Loader />}
       {error && <ErrorMessage error={error} width={888} />}
       {!error && !loading && allOrFavoriteCampers && (
-        <ul className={css.campersList}>
-          {Array.isArray(allOrFavoriteCampers) &&
-            allOrFavoriteCampers.map((camper) => {
-              return <Camper key={camper.id} camper={camper} />;
-            })}
-        </ul>
+        <div>
+          <ul className={css.campersList}>
+            {Array.isArray(allOrFavoriteCampers) &&
+              allOrFavoriteCampers.map((camper) => {
+                return <Camper key={camper.id} camper={camper} />;
+              })}
+          </ul>
+          {pathname === "/catalog" && page < totalPages && (
+            <button className={css.loadMoreBtn} onClick={handleClick}>
+              Load more
+            </button>
+          )}
+        </div>
       )}
     </>
   );
