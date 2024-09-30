@@ -25,7 +25,7 @@ const CampersList = () => {
   return (
     <>
       {loading && <Loader />}
-      {error && <ErrorMessage width={888} />}
+      {error && <ErrorMessage error={error} width={888} />}
       {!error && !loading && campers && (
         <ul className={css.campersList}>
           {Array.isArray(campers) &&

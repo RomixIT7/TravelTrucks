@@ -13,7 +13,10 @@ export const fetchCampers = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue({
+        status: error.response.status,
+        message: error.message,
+      });
     }
   }
 );
@@ -26,7 +29,10 @@ export const fetchCamperById = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue({
+        status: error.response.status,
+        message: error.message,
+      });
     }
   }
 );

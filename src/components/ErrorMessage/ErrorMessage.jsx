@@ -1,9 +1,11 @@
 import css from "./ErrorMessage.module.css";
 
-const ErrorMessage = ({ width }) => {
+const ErrorMessage = ({ error, width }) => {
   return (
     <p className={css.errorMessage} style={{ width: `${width}px` }}>
-      Something went wrong! Try again later.
+      {error?.status === 404
+        ? "Nothing found"
+        : "Something went wrong! Try again later."}
     </p>
   );
 };

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   loading: false,
-  error: false,
+  error: null,
 };
 
 const globalSlice = createSlice({
@@ -14,7 +14,7 @@ const globalSlice = createSlice({
         (action) => action.type.endsWith("pending"),
         (state) => {
           state.loading = true;
-          state.error = false;
+          state.error = null;
         }
       )
       .addMatcher(
@@ -25,9 +25,9 @@ const globalSlice = createSlice({
       )
       .addMatcher(
         (action) => action.type.endsWith("rejected"),
-        (state) => {
+        (state, action) => {
           state.loading = false;
-          state.error = true;
+          state.error = action.payload;
         }
       );
   },
