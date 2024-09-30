@@ -73,7 +73,11 @@ const Camper = ({ camper }) => {
 
         <CategoriesList camper={camper} />
 
-        <Link className={css.showMoreBtn} to={`/catalog/${camper.id}`}>
+        <Link
+          className={css.showMoreBtn}
+          to={`/catalog/${camper.id}`}
+          target="_blank"
+        >
           Show more
         </Link>
       </div>
