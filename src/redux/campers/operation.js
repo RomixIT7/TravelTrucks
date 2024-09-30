@@ -9,10 +9,16 @@ export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
   async (params = {}, thunkApi) => {
     try {
+      if (params?.transmission) params.transmission = "automatic";
+
       const { data } = await instance.get("/campers", { params });
+
+      if (params?.transmission) params.transmission = "true";
 
       return data;
     } catch (error) {
+      if (params?.transmission) params.transmission = "true";
+
       return thunkApi.rejectWithValue({
         status: error.response.status,
         message: error.message,

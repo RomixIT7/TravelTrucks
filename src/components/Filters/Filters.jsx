@@ -35,8 +35,6 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    values.transmission = values.transmission === true ? "automatic" : false;
-
     for (const key in values) {
       if (values[key] === initialValues[key]) {
         delete values[key];
