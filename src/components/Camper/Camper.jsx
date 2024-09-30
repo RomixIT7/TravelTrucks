@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import CategoriesList from "../CategoriesList/CategoriesList.jsx";
+
+import { addFavorite, deleteFavorite } from "../../redux/favorite/slice.js";
+import { selectFavorites } from "../../redux/favorite/selectors.js";
 
 import css from "./Camper.module.css";
 
 const Camper = ({ camper }) => {
+  const dispatch = useDispatch();
+
+  const favorites = useSelector(selectFavorites);
+
+  const toggleFav = favorites?.includes(camper.id);
+
+  const handleClick = (id) => {
+    if (toggleFav) {
+      dispatch(deleteFavorite(id));
+      return;
+    }
+
+    dispatch(addFavorite(id));
+  };
+
   return (
     <li className={css.campersItem}>
       <img
@@ -19,7 +38,16 @@ const Camper = ({ camper }) => {
             <p>{camper.name}</p>
             <div className={css.camperPriceWrapper}>
               <p>€{camper.price}.00</p>
-              <svg className={css.favoriteIcon} width="26" height="24">
+              <svg
+                onClick={() => {
+                  handleClick(camper.id);
+                }}
+                className={`${css.favoriteIcon} ${
+                  toggleFav ? css.favoriteIconChecked : ""
+                }`}
+                width="26"
+                height="24"
+              >
                 <use href="/symbol-defs.svg#icon-heart"></use>
               </svg>
             </div>

@@ -21,6 +21,9 @@ const Header = () => {
         <NavLink className={isLinkActive} to="/catalog">
           Catalog
         </NavLink>
+        <NavLink className={isLinkActive} to="/favorites">
+          Favorite
+        </NavLink>
       </nav>
     </header>
   );

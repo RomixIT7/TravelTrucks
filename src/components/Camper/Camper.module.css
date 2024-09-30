@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.favoriteIconChecked {
+  fill: var(--button);
+}
+
 .camperRatingAndLocationWrapper {
   font-family: var(--font-family);
   font-size: 16px;
