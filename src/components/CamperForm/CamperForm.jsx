@@ -1,9 +1,13 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 import Flatpickr from "react-flatpickr";
+import toast, { Toaster } from "react-hot-toast";
 
 import "flatpickr/dist/flatpickr.min.css";
 
 import css from "./CamperForm.module.css";
+
+const notify = () => toast.success("Your data has been sent successfully!");
 
 const initialValues = {
   name: "",
@@ -12,9 +16,20 @@ const initialValues = {
   comment: "",
 };
 
+const camperFormSchema = () =>
+  Yup.object().shape({
+    name: Yup.string().required("Name is required!").trim(),
+    email: Yup.string()
+      .email("Email is not valid!")
+      .required("Email is required!")
+      .trim(),
+    date: Yup.string().required("Date is required!"),
+    comment: Yup.string(),
+  });
+
 const CamperForm = () => {
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    notify();
     actions.resetForm();
   };
 
@@ -24,45 +39,84 @@ const CamperForm = () => {
       <p className={css.formSubTitle}>
         Stay connected! We are always ready to help you.
       </p>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
-          <div className={css.inputsWrapper}>
-            <Field
-              className={css.input}
-              type="text"
-              name="name"
-              placeholder="Name*"
-            ></Field>
-            <Field
-              className={css.input}
-              type="email"
-              name="email"
-              placeholder="Email*"
-            ></Field>
-            {/* <Field
-              className={css.input}
-              type="text"
-              name="date"
-              placeholder="Booking date*"
-            ></Field> */}
-            <Flatpickr
-              className={css.input}
-              type="text"
-              name="date"
-              placeholder="Booking date*"
-            />
-            <Field
-              className={`${css.textArea} ${css.input}`}
-              as="textarea"
-              name="comment"
-              placeholder="Comment"
-            ></Field>
-          </div>
-          <button className={css.formBtn} type="submit">
-            Send
-          </button>
-        </Form>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={camperFormSchema}
+      >
+        {({ setFieldValue, values }) => (
+          <Form>
+            <div className={css.inputsWrapper}>
+              <div className={css.inputWrapper}>
+                <Field
+                  className={css.input}
+                  type="text"
+                  name="name"
+                  placeholder="Name*"
+                ></Field>
+                <ErrorMessage
+                  className={css.errorMessage}
+                  name="name"
+                  component="span"
+                />
+              </div>
+
+              <div className={css.inputWrapper}>
+                <Field
+                  className={css.input}
+                  type="text"
+                  name="email"
+                  placeholder="Email*"
+                ></Field>
+                <ErrorMessage
+                  className={css.errorMessage}
+                  name="email"
+                  component="span"
+                />
+              </div>
+
+              <div className={css.inputWrapper}>
+                <Flatpickr
+                  className={css.input}
+                  type="text"
+                  name="date"
+                  placeholder="Booking date*"
+                  value={values.date}
+                  onChange={(date) => {
+                    setFieldValue("date", date[0]);
+                  }}
+                />
+                <ErrorMessage
+                  className={css.errorMessage}
+                  name="date"
+                  component="span"
+                />
+              </div>
+
+              <Field
+                className={`${css.textArea} ${css.input}`}
+                as="textarea"
+                name="comment"
+                placeholder="Comment"
+              ></Field>
+            </div>
+
+            <button className={css.formBtn} type="submit">
+              Send
+            </button>
+          </Form>
+        )}
       </Formik>
+
+      <Toaster
+        position="top-right-center"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            fontFamily: "var(--font-family)",
+          },
+        }}
+      />
     </div>
   );
 };
