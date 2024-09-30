@@ -24,3 +24,8 @@
 .loadMoreBtn:hover {
   border: 1px solid var(--button-hover);
 }
+
+.nothingToShow {
+  font-size: 24px;
+  color: var(--button);
+}

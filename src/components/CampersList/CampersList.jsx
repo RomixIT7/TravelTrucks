@@ -36,12 +36,14 @@ const CampersList = () => {
     favoriteCampersIdArray?.includes(camper.id)
   );
 
-  const totalPages = Math.ceil(campers?.length / perPage);
+  const whichPageIsIt = pathname === "/catalog" ? campers : favoriteCampers;
+
+  const totalPages = Math.ceil(whichPageIsIt?.length / perPage);
 
   const getCurrentPageData = () => {
     const start = (page - 1) * perPage;
     const end = start + perPage;
-    return campers?.slice(0, end);
+    return whichPageIsIt?.slice(0, end);
   };
 
   const handleClick = () => {
@@ -50,27 +52,27 @@ const CampersList = () => {
     }
   };
 
-  const allOrFavoriteCampers =
-    pathname === "/catalog" ? getCurrentPageData() : favoriteCampers;
-
   return (
     <>
       {loading && <Loader />}
       {error && <ErrorMessage error={error} width={888} />}
-      {!error && !loading && allOrFavoriteCampers && (
+      {!error && !loading && getCurrentPageData() && (
         <div>
           <ul className={css.campersList}>
-            {Array.isArray(allOrFavoriteCampers) &&
-              allOrFavoriteCampers.map((camper) => {
+            {Array.isArray(getCurrentPageData()) &&
+              getCurrentPageData().map((camper) => {
                 return <Camper key={camper.id} camper={camper} />;
               })}
           </ul>
-          {pathname === "/catalog" && page < totalPages && (
+          {page < totalPages && (
             <button className={css.loadMoreBtn} onClick={handleClick}>
               Load more
             </button>
           )}
         </div>
+      )}
+      {getCurrentPageData()?.length === 0 && (
+        <div className={css.nothingToShow}>Nothing to show</div>
       )}
     </>
   );
