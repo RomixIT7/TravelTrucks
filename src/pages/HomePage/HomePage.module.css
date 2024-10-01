@@ -3,7 +3,7 @@
     center/ cover no-repeat;
   height: 696px;
   z-index: -1;
-  padding: 260px 64px;
+  padding: 260px 0;
 }
 
 @media (min-device-pixel-ratio: 2),

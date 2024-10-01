@@ -1,7 +1,7 @@
 .header {
   position: relative;
   border-bottom: 1px solid var(--badges);
-  padding: 24px 64px;
+  padding: 24px 0;
   height: 72px;
   background-color: var(--inputs);
 }

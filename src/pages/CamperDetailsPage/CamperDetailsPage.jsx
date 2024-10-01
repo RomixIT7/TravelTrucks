@@ -30,7 +30,9 @@ const CamperDetailsPage = () => {
       {error && <ErrorMessage error={error} />}
       {!error && !loading && camper && (
         <div className={css.camperDetailsPageWrapper}>
-          {camper && <CamperDetails camper={camper} />}
+          <div className="container">
+            {camper && <CamperDetails camper={camper} />}
+          </div>
         </div>
       )}
     </>

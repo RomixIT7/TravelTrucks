@@ -5,11 +5,13 @@ import css from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
   return (
-    <div className={css.catalogPageWrapper}>
-      <aside className={css.aside}>
-        <Filters />
-      </aside>
-      <CampersList />
+    <div className={css.catalogPage}>
+      <div className={`container ${css.catalogPageWrapper}`}>
+        <aside className={css.aside}>
+          <Filters />
+        </aside>
+        <CampersList />
+      </div>
     </div>
   );
 };

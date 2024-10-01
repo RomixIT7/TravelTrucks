@@ -1,7 +1,11 @@
+.catalogPage {
+  padding-top: 48px;
+  padding-bottom: 52px;
+}
+
 .catalogPageWrapper {
-  padding: 48px 64px 52px;
   display: flex;
-  justify-content: space-between;
+  gap: 64px;
 }
 
 .aside {

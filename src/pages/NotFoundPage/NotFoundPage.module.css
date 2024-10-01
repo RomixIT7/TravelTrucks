@@ -5,6 +5,9 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 72px);
+  text-align: center;
+  padding-left: 64px;
+  padding-right: 64px;
 }
 
 .notFoundText {

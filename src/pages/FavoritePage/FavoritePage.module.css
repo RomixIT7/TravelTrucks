@@ -1,5 +1,9 @@
+.favoritePage {
+  padding-top: 48px;
+  padding-bottom: 52px;
+}
+
 .favoritePageWrapper {
-  padding: 48px 64px 52px;
   display: flex;
   justify-content: center;
 }

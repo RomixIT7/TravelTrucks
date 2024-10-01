@@ -4,8 +4,10 @@ import css from "./FavoritePage.module.css";
 
 const FavoritePage = () => {
   return (
-    <div className={css.favoritePageWrapper}>
-      <CampersList />
+    <div className={css.favoritePage}>
+      <div className={`container ${css.favoritePageWrapper}`}>
+        <CampersList />
+      </div>
     </div>
   );
 };
